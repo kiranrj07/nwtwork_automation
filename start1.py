@@ -1,11 +1,12 @@
 from wakeonlan import send_magic_packet
+import json
 
-def wake(device):
+def wake(dev):
 
-    print("from wake block printing mac: ", device['device']['mac'] )
-    # print("from wake block printing ip address: ", device['device']['ip_addr'])
 
-    #print(device)
+
+    device=json.loads(dev)
+    print("from wake block printing ip address: ", device['device']['ip_addr'])
     try:
         send_magic_packet(device['device']['mac'],
         ip_address = device['device']['ip_addr'],
